@@ -1,0 +1,286 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    const content = document.getElementById('content');
+    const loadingProgress = document.createElement('div');
+    loadingProgress.id = 'loading-progress';
+    loadingScreen.appendChild(loadingProgress);
+
+    // Simulate loading progress
+    let progress = 0;
+    const loadingInterval = setInterval(() => {
+        progress += Math.random() * 10;
+        if (progress > 100) progress = 100;
+        loadingProgress.style.width = `${progress}%`;
+        loadingProgress.textContent = `${Math.round(progress)}%`;
+        
+        if (progress === 100) {
+            clearInterval(loadingInterval);
+            setTimeout(() => {
+                loadingScreen.classList.add('hidden');
+                content.classList.remove('hidden');
+            }, 500); // Short delay after reaching 100%
+        }
+    }, 100);
+
+    // Fallback in case loading takes too long
+    setTimeout(() => {
+        if (!loadingScreen.classList.contains('hidden')) {
+            clearInterval(loadingInterval);
+            loadingScreen.classList.add('hidden');
+            content.classList.remove('hidden');
+        }
+    }, 5000); // Max 5 seconds loading time
+
+    /* -------------------- Smooth Scrolling -------------------- */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        });
+    });
+
+    /* -------------------- Gallery Slideshow -------------------- */
+    const galleryPhotos = document.querySelectorAll('.gallery-photo');
+    let currentPhoto = 0;
+
+    function showNextPhoto() {
+        galleryPhotos[currentPhoto].classList.remove('active');
+        currentPhoto = (currentPhoto + 1) % galleryPhotos.length;
+        galleryPhotos[currentPhoto].classList.add('active');
+    }
+
+    setInterval(showNextPhoto, 5000); // Auto-slide every 5 seconds
+
+    galleryPhotos.forEach(photo => {
+        photo.addEventListener('click', function() {
+            this.classList.toggle('zoom');
+        });
+    });
+
+    /* -------------------- Timeline Animation -------------------- */
+    const timelineItems = document.querySelectorAll('.timeline-item');
+
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    timelineItems.forEach(item => {
+        timelineObserver.observe(item);
+    });
+
+    /* -------------------- Video Progress Tracker -------------------- */
+    const video = document.querySelector('video');
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    document.querySelector('#video-section').appendChild(progressBar);
+
+    video.addEventListener('timeupdate', () => {
+        const progress = (video.currentTime / video.duration) * 100;
+        progressBar.style.width = `${progress}%`;
+    });
+
+    /* -------------------- Wishes Section -------------------- */
+    let wishCount = 0;
+    const wishForm = document.getElementById('wish-form');
+    const wishCountElement = document.getElementById('wish-count');
+    const wishesList = document.getElementById('wishes-list');
+
+    wishForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const wishText = wishForm.querySelector('textarea').value;
+        if (wishText.trim() !== '') {
+            wishCount++;
+            wishCountElement.textContent = wishCount;
+            addWishToList(wishText);
+            displayConfetti();
+            displayPopupMessage("Your wish has been sent!");
+            wishForm.reset();
+        }
+    });
+
+    function addWishToList(wish) {
+        const li = document.createElement('li');
+        li.textContent = wish;
+        wishesList.appendChild(li);
+    }
+
+    function displayPopupMessage(message) {
+        const popup = document.createElement('div');
+        popup.classList.add('popup-message');
+        popup.textContent = message;
+        document.body.appendChild(popup);
+
+        setTimeout(() => {
+            popup.remove();
+        }, 3000);
+    }
+
+
+    // Music control functionality
+    musicControl.addEventListener('click', () => {
+        if (bgMusic.paused) {
+            bgMusic.play().catch(e => console.log("Audio play failed:", e));
+            musicControl.textContent = '🔊';
+        } else {
+            bgMusic.pause();
+            musicControl.textContent = '🔇';
+        }
+    });
+
+    /* -------------------- Countdown Timer -------------------- */
+    const countdownTimer = document.getElementById('countdown-timer');
+    const eventDate = new Date('2024-10-11T00:00:00').getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const timeLeft = eventDate - now;
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        countdownTimer.textContent = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        if (timeLeft < 0) {
+            countdownTimer.textContent = "Happy Birthday!";
+        }
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    /* -------------------- Confetti Effect -------------------- */
+    function displayConfetti() {
+        const confettiElement = document.createElement('div');
+        confettiElement.className = 'confetti';
+        document.body.appendChild(confettiElement);
+
+        setTimeout(() => {
+            confettiElement.remove();
+        }, 3000); // Remove after 3 seconds
+    }
+
+    /* -------------------- Birthday Quiz -------------------- */
+    const quizContainer = document.getElementById('quiz-container');
+    const questionContainer = document.getElementById('question-container');
+    const answerButtonsElement = document.getElementById('answer-buttons');
+    const nextButton = document.getElementById('next-button');
+    const scoreContainer = document.getElementById('score-container');
+    const scoreElement = document.getElementById('score');
+
+    let shuffledQuestions, currentQuestionIndex, score;
+
+    const questions = [
+        {
+            question: "What is Humaira's favorite color?",
+            answers: [
+                { text: 'Blue', correct: true },
+                { text: 'Red', correct: false },
+                { text: 'Green', correct: false },
+                { text: 'Yellow', correct: false }
+            ]
+        },
+        {
+            question: "What is Humaira's birth month?",
+            answers: [
+                { text: 'January', correct: false },
+                { text: 'June', correct: false },
+                { text: 'September', correct: false },
+                { text: 'October', correct: true }
+            ]
+        },
+        // Add more questions here
+    ];
+
+    function startQuiz() {
+        score = 0;
+        shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+        currentQuestionIndex = 0;
+        nextButton.classList.remove('hide');
+        scoreContainer.classList.add('hide');
+        setNextQuestion();
+    }
+
+    function setNextQuestion() {
+        resetState();
+        if (currentQuestionIndex < shuffledQuestions.length) {
+            showQuestion(shuffledQuestions[currentQuestionIndex]);
+        } else {
+            showScore();
+        }
+    }
+
+    function showQuestion(question) {
+        questionContainer.innerText = question.question;
+        question.answers.forEach(answer => {
+            const button = document.createElement('button');
+            button.innerText = answer.text;
+            button.classList.add('btn');
+            if (answer.correct) {
+                button.dataset.correct = answer.correct;
+            }
+            button.addEventListener('click', selectAnswer);
+            answerButtonsElement.appendChild(button);
+        });
+    }
+
+    function resetState() {
+        nextButton.classList.add('hide');
+        while (answerButtonsElement.firstChild) {
+            answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+        }
+    }
+
+    function selectAnswer(e) {
+        const selectedButton = e.target;
+        const correct = selectedButton.dataset.correct;
+        setStatusClass(document.body, correct);
+        Array.from(answerButtonsElement.children).forEach(button => {
+            setStatusClass(button, button.dataset.correct);
+        });
+        if (correct) score++;
+        if (shuffledQuestions.length > currentQuestionIndex + 1) {
+            nextButton.classList.remove('hide');
+        } else {
+            nextButton.innerText = 'Finish';
+            nextButton.classList.remove('hide');
+        }
+    }
+
+    function setStatusClass(element, correct) {
+        clearStatusClass(element);
+        if (correct) {
+            element.classList.add('correct');
+        } else {
+            element.classList.add('wrong');
+        }
+    }
+
+    function clearStatusClass(element) {
+        element.classList.remove('correct');
+        element.classList.remove('wrong');
+    }
+
+    function showScore() {
+        resetState();
+        questionContainer.innerText = `You scored ${score} out of ${questions.length}!`;
+        scoreContainer.classList.remove('hide');
+        scoreElement.innerText = score;
+        nextButton.innerText = 'Restart';
+        nextButton.classList.remove('hide');
+    }
+
+    nextButton.addEventListener('click', () => {
+        currentQuestionIndex++;
+        setNextQuestion();
+    });
+
+    startQuiz();
+});

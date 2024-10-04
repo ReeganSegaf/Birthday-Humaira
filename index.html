@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Humaira!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loading-screen">
+        <div id="loading-animation"></div>
+        <h2>Celebrating Humaira...</h2>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="./musik/music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <button id="musicControl">🎵</button>
+
+    <div id="content" class="hidden">
+        <header>
+            <h1>Happy Birthday Humaira!</h1>
+            <div id="countdown-timer"></div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#video-section">Special Video</a></li>
+                <li><a href="#wishes">Wishes</a></li>
+                <li><a href="#quiz">Birthday Quiz</a></li>
+            </ul>
+        </nav>
+
+        <section id="gallery" class="section">
+            <h2>Memory Gallery</h2>
+            <div class="gallery-grid">
+                <img src="./img/maira1.jpg" alt="Memory 1" class="gallery-photo">
+                <img src="./img/maira2.jpg" alt="Memory 2" class="gallery-photo">
+                <img src="./img/maira3.jpg" alt="Memory 3" class="gallery-photo">
+                <img src="./img/maira4.jpg" alt="Memory 4" class="gallery-photo">
+                <img src="./img/maira5.jpg" alt="Memory 5" class="gallery-photo">
+                <img src="./img/maira6.jpg" alt="Memory 6" class="gallery-photo">
+            </div>
+        </section>
+
+        <section id="timeline" class="section">
+            <h2>Memories Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <h3>Perkenalan Awal</h3>
+                    <p>Semua bermula ketika keluarga memperkenalkan Humaira, meskipun saat itu aku belum melihat wajahmu. Namun, sejak awal aku merasakan sesuatu yang istimewa. Tidak ada keraguan dalam hatiku; hanya keinginan yang mendalam untuk mengenalmu lebih jauh.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Perasaan Tumbuh</h3>
+                    <p>Setiap momen sejak perkenalan itu terasa berharga. Perjalananku dimulai dengan rasa ingin tahu dan kebahagiaan yang tulus. Aku mulai menyadari betapa istimewa dirimu dalam hidupku.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Kebahagiaanku</h3>
+                    <p>Kini, setiap hari bersamamu adalah sebuah keajaiban yang aku syukuri. Setiap pengalaman dan momen yang aku lewati bersama Humaira semakin menguatkan rasa cinta dan kebahagiaan dalam hidupku.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Hari Spesialmu</h3>
+                    <p>Hari ini adalah hari spesialmu, hari yang telah kutunggu dengan penuh kebahagiaan. Hari ini bukan hanya perayaan usiamu, tapi juga perayaan segala cinta, tawa, dan kenangan yang kamu bangun bersama keluarga dan sahabatmu. Semoga setiap detik di hari ini dipenuhi dengan senyuman, kehangatan, dan kebahagiaan yang tak terhingga. Aku merasa sangat beruntung bisa berada di sampingmu dan merayakan hari ini denganmu. Selamat ulang tahun, Humaira. Semoga segala impian dan harapanmu terwujud, dan aku akan selalu ada di sini untuk merayakan setiap langkah dalam perjalanan hidupmu.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="video-section" class="section">
+            <h2>Special Video</h2>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="./video/2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </section>
+
+        <section id="wishes" class="section">
+            <h2>Send Your Wishes</h2>
+            <form id="wish-form">
+                <textarea placeholder="Write your birthday wish here..." required></textarea>
+                <button type="submit">Send Wish</button>
+            </form>
+            <div id="wishes-display">
+                <h3>Birthday Wishes</h3>
+                <ul id="wishes-list"></ul>
+            </div>
+            <p>Total Wishes: <span id="wish-count">0</span></p>
+        </section>
+
+        <section id="quiz" class="section">
+            <h2>Birthday Quiz</h2>
+            <div id="quiz-container">
+                <div id="question-container"></div>
+                <div id="answer-buttons" class="btn-grid"></div>
+                <button id="next-button" class="hide">Next</button>
+            </div>
+            <div id="score-container" class="hide">
+                <h3>Your Score: <span id="score"></span></h3>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Celebration for Humaira. Made with ❤️</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

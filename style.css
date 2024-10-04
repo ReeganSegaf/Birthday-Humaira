@@ -1,0 +1,483 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #0e1e40, #1c3a5e);
+    color: #fff;
+    line-height: 1.6;
+}
+
+.section {
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #f1c40f;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Existing CSS remains the same */
+
+/* Updated Loading Screen styles */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0e1e40;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#loading-animation {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #f39c12;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+#loading-progress {
+    width: 0%;
+    height: 4px;
+    background-color: #f39c12;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-out;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    line-height: 4px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#musicControl {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+#musicControl:hover {
+    transform: scale(1.1);
+}
+
+/* Rest of the CSS remains the same */
+
+/* Header and Navigation */
+header {
+    background: linear-gradient(90deg, #f39c12, #f1c40f);
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #f39c12;
+}
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery-photo {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    cursor: pointer;
+}
+
+.gallery-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Timeline */
+.timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #f39c12;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: #f39c12;
+    border: 4px solid #f1c40f;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -16px;
+}
+
+.timeline-item h3 {
+    color: #f1c40f;
+}
+
+
+/* Video Section */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+/* Wishes Section */
+#wish-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    resize: vertical;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e67e22;
+}
+
+#wishes-display {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#wishes-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#wishes-list li {
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Quiz Section */
+#quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    background-color: #f39c12;
+    border: 1px solid #e67e22;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #e67e22;
+}
+
+.btn.correct {
+    background-color: #2ecc71;
+}
+
+.btn.wrong {
+    background-color: #e74c3c;
+}
+
+.hide {
+    display: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #f39c12;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .timeline-container::after {
+        left: 31px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .timeline-item::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent white transparent transparent;
+    }
+
+    .timeline-item::after {
+        left: 15px;
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0%;
+    }
+}
+
+/* Responsive adjustments for smaller screens (phones) */
+@media (max-width: 480px) {
+    
+    /* Adjusting the body padding and font sizes for smaller screens */
+    body {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    /* Gallery grid for smaller screens */
+    .gallery-grid {
+        grid-template-columns: 1fr; /* One column on small devices */
+        gap: 15px;
+    }
+
+    /* Timeline items stacking properly */
+    .timeline-container {
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    .timeline-container::after {
+        left: 20px; /* Line moves to the left for mobile view */
+    }
+
+    .timeline-item {
+        width: 100%; /* Full width for each item */
+        padding: 10px 20px;
+        margin-bottom: 20px; /* Increase space between timeline items */
+    }
+
+    .timeline-item::after {
+        left: 10px; /* Adjust marker for mobile */
+    }
+
+    .timeline-item:nth-child(even) {
+        left: 0; /* All items aligned left for stacking */
+    }
+
+    /* Navigation links in a column */
+    nav ul {
+        flex-direction: column; /* Stacked vertically */
+        padding: 0;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    /* Adjusting the video section to fit better */
+    .video-wrapper {
+        padding-bottom: 60%; /* Maintain aspect ratio */
+    }
+
+    /* Button sizes for smaller screens */
+    button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+
+    /* Birthday quiz buttons stacking on smaller screens */
+    .btn-grid {
+        grid-template-columns: 1fr; /* Single column for answers */
+        gap: 15px;
+    }
+}
+/* Specific adjustments for mobile screens (max-width 480px) */
+@media (max-width: 480px) {
+
+    /* Timeline main container adjustments */
+    .timeline-container {
+        padding: 0 10px;
+    }
+
+    /* Remove the timeline vertical line on mobile */
+    .timeline-container::after {
+        display: none;
+    }
+
+    /* Full width for each timeline item */
+    .timeline-item {
+        width: 100%; /* Ensure full width */
+        padding: 15px 10px; /* Adjust padding for mobile */
+        background: rgba(255, 255, 255, 0.1); /* Add background for better contrast */
+        margin-bottom: 20px; /* Add more space between items */
+        position: relative;
+        border-radius: 10px; /* Make edges smoother */
+    }
+
+    /* Adjust the marker for each timeline item */
+    .timeline-item::after {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 15px;
+        width: 12px;
+        height: 12px;
+        background-color: #f39c12;
+        border: 2px solid #f1c40f;
+        border-radius: 50%;
+    }
+
+    /* Adjust text alignment and spacing */
+    .timeline-item h3 {
+        margin-top: 0;
+        font-size: 1.2rem;
+        color: #f1c40f;
+        text-align: left;
+    }
+
+    .timeline-item p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        text-align: left;
+        margin-top: 10px;
+    }
+
+    /* Remove left and right alignment for timeline items */
+    .timeline-item:nth-child(even), 
+    .timeline-item:nth-child(odd) {
+        left: 0;
+    }
+}
