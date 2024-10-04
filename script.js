@@ -134,27 +134,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* -------------------- Countdown Timer -------------------- */
-    const countdownTimer = document.getElementById('countdown-timer');
-    const eventDate = new Date('2024-10-11T00:00:00').getTime();
+   /* Countdown Timer */
+const countdownTimer = document.getElementById('countdown-timer');
+const eventDate = new Date('2024-10-11T00:00:00').getTime(); // Pastikan format ini benar dan didukung browser
 
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const timeLeft = eventDate - now;
+function updateCountdown() {
+    const now = new Date().getTime(); // Mendapatkan waktu saat ini
+    const timeLeft = eventDate - now; // Menghitung sisa waktu hingga acara
 
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    if (timeLeft > 0) {
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24)); // Konversi dari milidetik ke hari
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); // Sisa jam
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)); // Sisa menit
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000); // Sisa detik
 
         countdownTimer.textContent = `Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-        if (timeLeft < 0) {
-            countdownTimer.textContent = "Happy Birthday!";
-        }
+    } else {
+        countdownTimer.textContent = "Happy Birthday,Maira! Today we celebrate YOU, my love, my joy, my everything!";
     }
+}
 
-    setInterval(updateCountdown, 1000);
+// Update countdown setiap 1 detik
+setInterval(updateCountdown, 1000);
+
 
     /* -------------------- Confetti Effect -------------------- */
     function displayConfetti() {
