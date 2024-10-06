@@ -168,24 +168,44 @@ nav ul li a:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Timeline Container */
+/* Timeline styles */
 .timeline-container {
     position: relative;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 20px 0;
 }
 
 .timeline-container::after {
     content: '';
     position: absolute;
-    width: 6px;
+    width: 4px;
     background-color: #f39c12;
     top: 0;
     bottom: 0;
-    left: 20px; /* Mengubah posisi garis ke kiri */
-    margin-left: -3px;
-    border-radius: 3px;
+    left: 20px;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    padding: 20px 30px 20px 70px;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #f39c12;
+    border: 4px solid #f1c40f;
+    border-radius: 50%;
+    left: 12px;
+    top: 20px;
+    z-index: 1;
 }
 
 /* Timeline Item */
@@ -505,60 +525,55 @@ footer {
         gap: 15px;
     }
 }
-/* Specific adjustments for mobile screens (max-width 480px) */
-@media (max-width: 480px) {
-
-    /* Timeline main container adjustments */
-    .timeline-container {
-        padding: 0 10px;
-    }
-
-    /* Remove the timeline vertical line on mobile */
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
     .timeline-container::after {
-        display: none;
+        left: 30px;
     }
 
-    /* Full width for each timeline item */
     .timeline-item {
-        width: 100%; /* Ensure full width */
-        padding: 15px 10px; /* Adjust padding for mobile */
-        background: rgba(255, 255, 255, 0.1); /* Add background for better contrast */
-        margin-bottom: 20px; /* Add more space between items */
-        position: relative;
-        border-radius: 10px; /* Make edges smoother */
+        width: calc(100% - 60px);
+        padding: 15px 15px 15px 60px;
+        margin-left: 45px;
     }
 
-    /* Adjust the marker for each timeline item */
     .timeline-item::after {
-        content: '';
-        position: absolute;
-        left: 10px;
+        left: -12px;
         top: 15px;
-        width: 12px;
-        height: 12px;
-        background-color: #f39c12;
-        border: 2px solid #f1c40f;
-        border-radius: 50%;
+        width: 15px;
+        height: 15px;
     }
 
-    /* Adjust text alignment and spacing */
     .timeline-item h3 {
+        font-size: 1.1rem;
         margin-top: 0;
-        font-size: 1.2rem;
-        color: #f1c40f;
-        text-align: left;
     }
 
     .timeline-item p {
         font-size: 0.9rem;
-        line-height: 1.4;
-        text-align: left;
-        margin-top: 10px;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-container {
+        padding: 10px 0;
     }
 
-    /* Remove left and right alignment for timeline items */
-    .timeline-item:nth-child(even), 
-    .timeline-item:nth-child(odd) {
-        left: 0;
+    .timeline-container::after {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: calc(100% - 50px);
+        padding: 15px 15px 15px 50px;
+        margin-left: 35px;
+        margin-bottom: 20px;
+    }
+
+    .timeline-item::after {
+        left: -10px;
+        width: 12px;
+        height: 12px;
     }
 }
