@@ -181,15 +181,6 @@ setInterval(updateCountdown, 1000);
 
     const questions = [
         {
-            question: "What is Humaira's favorite color?",
-            answers: [
-                { text: 'Blue', correct: true },
-                { text: 'Red', correct: false },
-                { text: 'Green', correct: false },
-                { text: 'Yellow', correct: false }
-            ]
-        },
-        {
             question: "What is Humaira's birth month?",
             answers: [
                 { text: 'January', correct: false },
@@ -198,7 +189,96 @@ setInterval(updateCountdown, 1000);
                 { text: 'October', correct: true }
             ]
         },
-        // Add more questions here
+        {
+            question: "What is the most important thing you wish to achieve in life with someone?",
+            answers: [
+                { text: "Building a harmonious and happy family", correct: true },
+                { text: "Supporting each other in every step", correct: true },
+                { text: "Living a life full of blessings", correct: true },
+                { text: "Being together in both joy and challenges", correct: true }
+            ]
+        },
+        {
+            question: "What is the best way to face challenges in life together?",
+            answers: [
+                { text: "With patience and prayer", correct: true },
+                { text: "By communicating and supporting each other", correct: true },
+                { text: "By staying calm and finding solutions together", correct: true },
+                { text: "Facing it with a sincere heart", correct: true }
+            ]
+        },
+        {
+            question: "What are you most grateful for in someone by your side?",
+            answers: [
+                { text: "Their presence that always brings peace", correct: true },
+                { text: "The way they understand without saying much", correct: true },
+                { text: "Their sincere and thoughtful care", correct: true },
+                { text: "All the little things that make life feel better", correct: true }
+            ]
+        },
+        {
+            question: "What does love mean to you in the context of Ta'aruf?",
+            answers: [
+                { text: "Love based on good and sincere intentions", correct: true },
+                { text: "Mutual respect and care for each other", correct: true },
+                { text: "Love that grows with time, full of sincerity", correct: true },
+                { text: "Building a love that brings goodness and blessings", correct: true }
+            ]
+        },
+        {
+            question: "What do you think can make a relationship stronger?",
+            answers: [
+                { text: "Honesty and openness", correct: true },
+                { text: "Understanding each other even when we disagree", correct: true },
+                { text: "Patience in facing differences", correct: true },
+                { text: "Willingness to always support one another", correct: true }
+            ]
+        },
+        {
+            question: "If we're having a tough day, what do you need from me the most?",
+            answers: [
+                { text: "Support and prayers to get through it all", correct: true },
+                { text: "Your presence that makes everything easier", correct: true },
+                { text: "A smile that encourages and gives meaning", correct: true },
+                { text: "Time to listen and share", correct: true }
+            ]
+        },
+        {
+            question: "In your opinion, what is most important in maintaining a relationship?",
+            answers: [
+                { text: "Mutual trust and support", correct: true },
+                { text: "Respecting differences and maintaining communication", correct: true },
+                { text: "Commitment to strengthening each other in every situation", correct: true },
+                { text: "Having good intentions to bring goodness", correct: true }
+            ]
+        },
+        {
+            question: "How do we keep the warmth in our relationship?",
+            answers: [
+                { text: "By reminding each other of goodness", correct: true },
+                { text: "Through prayers together for the blessings of our relationship", correct: true },
+                { text: "With small but meaningful gestures", correct: true },
+                { text: "Sharing stories and always listening", correct: true }
+            ]
+        },
+        {
+            question: "What do you appreciate most in a person you want as a partner?",
+            answers: [
+                { text: "Their honesty and sincerity", correct: true },
+                { text: "The way they respect and value the relationship", correct: true },
+                { text: "Their care and affection", correct: true },
+                { text: "Their presence that always brings peace to the heart", correct: true }
+            ]
+        },
+        {
+            question: "If you could send one important message to our relationship, what would it be?",
+            answers: [
+                { text: "May Allah always bless every step we take together", correct: true },
+                { text: "I hope we continue to support each other in goodness", correct: true },
+                { text: "May we build a future full of love and happiness together", correct: true },
+                { text: "I pray that our relationship is always based on good intentions", correct: true }
+            ]
+        }
     ];
 
     function startQuiz() {
